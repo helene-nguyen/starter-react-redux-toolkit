@@ -24,6 +24,10 @@ $dark-03: #272629;
 $light-01: #fefcff;
 $light-02: #fff;
 $red-01: #d40035;
+$green-01:#ADE792;
+$green-02:#68B984;
+$purple-01:#BA94D1;
+$purple-02:#7743DB;
 
 //~ Box shadows
 $box-shadow-01: rgba(0, 0, 0, 0.2) 0px 0px 50px 8px;
@@ -36,14 +40,14 @@ $drop-shadow-01: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.3));
 $themeSite: (
   light: (
     background: $light-01,
-    title: $red-01,
+    title: $purple-02,
     text: $dark-01,
     link: $dark-01,
     spinner: $dark-01,
   ),
   dark: (
     background: $dark-01,
-    title: $red-01,
+    title: $purple-01,
     text: $light-01,
     link: $light-01,
     spinner: $light-01,
@@ -75,8 +79,12 @@ $themeBtn: (
 //& Theme Buttons
 $themeNavbar: (
   light: (
+    backgroundAfter: $purple-02,
+    backgroundActiveAfter: $purple-02,
   ),
   dark: (
+    backgroundAfter: $purple-01,
+    backgroundActiveAfter: $purple-01,
   ),
 );
 

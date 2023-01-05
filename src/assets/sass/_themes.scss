@@ -19,7 +19,6 @@
     color: mixins.themed('text');
   }
 
-
   header {
     // transition: all 0.30s ease-in-out;
     background-color: mixins.themed('background');
@@ -34,16 +33,19 @@
     stroke: mixins.themed('spinner');
   }
 
+  .loader-drop {
+    &:before,
+    &:after {
+      border: 1px solid mixins.themed('spinner');
+    }
+  }
 }
 
-
-
 @include mixins.themify(vars.$themeBtn) {
- 
   .button {
     &__form {
       background-color: mixins.themed('background');
-      &:hover{
+      &:hover {
         background-color: mixins.themed('bgButton');
       }
       &:active {
@@ -51,11 +53,19 @@
       }
     }
   }
-
 }
 
 //& Theme Navbar
 @include mixins.themify(vars.$themeNavbar) {
+  .navbar {
+    &__item {
+      &::after {
+        background-color: mixins.themed('backgroundAfter');
+      }
 
+      &--active::after {
+        background-color: mixins.themed('backgroundActiveAfter');
+      }
+    }
+  }
 }
-

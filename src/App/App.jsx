@@ -1,5 +1,5 @@
 //~ Imports Components
-import { Router } from '../Routes/Routes';
+import { Router, mainRoutes, articleRoute } from '../Routes/Routes';
 import Layout from '../Layout/Layout';
 
 //~ Import Module
@@ -9,16 +9,14 @@ import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 
 const App = () => {
-  const mapRouter = Router.map(({ id, name, mainPath, mainElement }) => <Route key={id} path={mainPath} element={mainElement} />);
-
   return (
     <Routes>
       <Route path="/" element={<Layout pages={Router} />}>
-        {mapRouter}
+        {mainRoutes}
+        {articleRoute}
       </Route>
     </Routes>
   );
 };
 
 export { App };
-

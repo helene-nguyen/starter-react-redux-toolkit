@@ -11,11 +11,11 @@ const Navbar = () => {
   return (
     <nav className='navbar'>
       <ul>
-        {Router.map(
-          ({ id, name, mainPath }) =>
-            name !== 'NoPage' && (
+      {Router.map(
+          ({ id, isNav, name, mainPath }) =>
+          isNav && (
               <li key={id}>
-                <NavLink className={({ isActive }) => (isActive ? 'navbar__item--active' : 'navbar__item')} to={mainPath}>
+                <NavLink className={({ isActive }) => (isActive ? 'navbar__item navbar__item--active' : 'navbar__item')} to={mainPath}>
                   {name}
                 </NavLink>
               </li>

@@ -10,12 +10,9 @@ import { Spinner } from '../Components';
 //& Import SCSS
 import './Layout.scss';
 
-const Layout = ({ pages }) => {
+const Layout = () => {
   // -------------- Dark Mode
   const [theme, setTheme] = useTheme();
-
-  // Detecting mobile or not
-  // console.log(window.navigator.userAgentData.mobile)
 
   return (
     <div className={`layout theme--${theme}`}>

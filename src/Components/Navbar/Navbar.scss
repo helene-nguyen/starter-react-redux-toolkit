@@ -1,14 +1,50 @@
+@use '../../assets/sass/mixins.scss';
+@use '../../assets/sass/vars.scss';
+
 .navbar {
   font-size: 1rem;
 
   & ul {
     display: flex;
 
-    & a {
+    & li {
+      position: relative;
+      z-index: 1;
+      //display
+      @include mixins.flexbox(center, center);
+      //boxmodel
+      height: 1rem;
       margin: 2rem;
-      text-decoration: none;
-      text-transform: uppercase;
+    }
+  }
+
+  &__item {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    transform-origin: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1.5px;
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: all 0.15s ease-in-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: center;
+    }
+
+    &--active::after {
+      transform: scaleX(1);
+      transform-origin: center;
+      transition: all 0.15s ease-in-out;
     }
   }
 }
-

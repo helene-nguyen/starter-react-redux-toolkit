@@ -4,9 +4,11 @@ import { ReactComponent as SpinnerSVG } from './Spinner.svg';
 
 const Spinner = () => {
   return (
-    <SpinnerSVG />
+    <>
+      {/* <SpinnerSVG /> */}
+      <div className="loader-drop"></div>
+    </>
   );
-}
+};
 
 export default Spinner;
-
