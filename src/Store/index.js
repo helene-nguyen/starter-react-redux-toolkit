@@ -1,11 +1,11 @@
-import rootReducer from './Reducers/index.js';
+import rootReducer from './Reducers';
 import { configureStore } from '@reduxjs/toolkit';
-import middlewares from './Middlewares/index.js';
+import middleware from './Middlewares';
 
 //recent way to configure store
 export const store = configureStore(
   {
     reducer: rootReducer,
+    middleware
   },
-  middlewares
 );

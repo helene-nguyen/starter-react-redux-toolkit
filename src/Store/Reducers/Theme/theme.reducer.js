@@ -3,7 +3,7 @@ const initialState = {
 };
 
 const toggleTheme = (state) => {
-  state.default === 'dark' ? (state.default = 'light') : (state.default = 'dark');
+  state.default = state.default === 'dark' ? 'light' : 'dark';
 };
 
 export const themeReducer = {

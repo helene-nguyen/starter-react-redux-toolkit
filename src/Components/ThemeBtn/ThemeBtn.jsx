@@ -5,11 +5,11 @@ import './ThemeBtn.scss';
 
 const ThemeBtn = () => {
   const dispatch = useDispatch();
-  const test = () => dispatch(toggleTheme());
+  const changeTheme = () => dispatch(toggleTheme());
 
   return (
     <section className="button">
-      <div onClick={test} className="button__form"></div>
+      <div onClick={changeTheme} className="button__form"></div>
     </section>
   );
 };
