@@ -1,6 +1,6 @@
 //& Import Module
 import { Outlet } from 'react-router-dom';
-import { useTheme } from '../Hooks/useTheme';
+import { useSelector } from 'react-redux';
 
 //& Imports Components
 import Footer from './Footer/Footer';
@@ -11,12 +11,11 @@ import { Spinner } from '../Components';
 import './Layout.scss';
 
 const Layout = () => {
-  // -------------- Dark Mode
-  const [theme, setTheme] = useTheme();
+  const theme = useSelector((state) => state.theme.default);
 
   return (
     <div className={`layout theme--${theme}`}>
-      <Header handleToggleMode={setTheme} theme={theme} />
+      <Header theme={theme} />
       <main>
         <Spinner />
         <Outlet />
@@ -27,4 +26,3 @@ const Layout = () => {
 };
 
 export default Layout;
-

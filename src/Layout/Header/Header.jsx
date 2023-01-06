@@ -1,20 +1,18 @@
 //& Import modules
-
-//& Imports SCSS
+import { useSelector } from 'react-redux';
 import './Header.scss';
-
-//& Import Component
 import { Logo, Navbar, ThemeBtn } from '../../Components';
 
-const Header = ({ handleToggleMode, theme }) => {
+const Header = () => {
+  const theme = useSelector((state) => state.theme.default);
+
   return (
     <header className={`header theme--${theme}`}>
       <Logo />
       <Navbar />
-      <ThemeBtn handleToggleMode={handleToggleMode} />
+      <ThemeBtn />
     </header>
   );
 };
 
 export default Header;
-

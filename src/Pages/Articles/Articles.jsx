@@ -1,4 +1,4 @@
-//& Import SCSS
+//& Import modules
 import './Articles.scss';
 
 const Articles = () => {
@@ -10,4 +10,3 @@ const Articles = () => {
 };
 
 export default Articles;
-
