@@ -6,6 +6,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './Store';
 
+//& Import ApiProvider
+import { ApiProvider } from '@reduxjs/toolkit/query/react';
+import { apiSlice } from './Store/Api';
+
 //& Import Component
 import { App } from './App/App';
 
@@ -16,9 +20,11 @@ const root = createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <ApiProvider api={apiSlice}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ApiProvider>
     </BrowserRouter>
   </StrictMode>
 );

@@ -1,23 +1,21 @@
-//& Import Module
+//& Imports
+import './Layout.scss';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-//& Imports Components
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import { Spinner } from '../Components';
 
-//& Import SCSS
-import './Layout.scss';
-
+//& Component
 const Layout = () => {
   const theme = useSelector((state) => state.theme.default);
+  // console.log('theme in layout: ', theme);
 
   return (
     <div className={`layout theme--${theme}`}>
       <Header theme={theme} />
       <main>
-        <Spinner />
+        <Spinner/>
         <Outlet />
       </main>
       <Footer theme={theme} />

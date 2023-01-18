@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useFetch = (apiUrl, method, bodyData, accessToken) => {
+const useFetch = (apiUrl, method, bodyData, accessToken, refreshToken) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,9 +21,11 @@ const useFetch = (apiUrl, method, bodyData, accessToken) => {
         };
 
         if (accessToken) options.headers['Authorization'] = `Bearer ${accessToken}`;
+        if (refreshToken) options.headers['Authorization'] = `Bearer ${refreshToken}`;
 
         const response = await fetch(apiUrl, options, { signal });
         const result = await response.json();
+        console.log('result: ', result);
 
         if (!response.ok) {
           setIsLoading(false);
@@ -51,4 +53,3 @@ const useFetch = (apiUrl, method, bodyData, accessToken) => {
 };
 
 export { useFetch };
-

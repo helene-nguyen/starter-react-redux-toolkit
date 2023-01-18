@@ -1,6 +1,6 @@
 //& Import modules
-import { useSelector } from 'react-redux';
 import './Header.scss';
+import { useSelector } from 'react-redux';
 import { Logo, Navbar, ThemeBtn } from '../../Components';
 
 const Header = () => {
