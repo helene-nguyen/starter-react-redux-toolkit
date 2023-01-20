@@ -3,18 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 
 //~ Initial state
 const initialState = {
-  message: null,
+  
 };
 
 //~ Methods
 const handleMsg = (state, action) => {
-  console.log('state: ', state.message);
-  console.log('here reducer rental : ', action.payload);
+//   console.log('here reducer rental : ', action.payload);
 };
 
 //~ Exports
 export const rentalSlice = createSlice({
-  name: 'rental',
+  name: 'auth',
   initialState,
   reducers: {
     handleRentalMsg: handleMsg,

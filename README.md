@@ -92,6 +92,56 @@ Internally, _createApi_ will call the Redux Toolkit _createSlice_ API to generat
       └── __fake_data__
 ``` 
 
+
+```js
+//Notes 
+
+
+/*
+---------------
+ETAPE 1 - UTILISATION DE CREATEAPI
+---------------
+ETAPE 2 - EXPORT dans le cas des requêtes use<nomEndpoint>Query - dans le cas des mutations use<nomEndpoint>Mutation
+
+The hooks are automatically named based on a standard convention:
+
+- use, the normal prefix for any React hook
+- The name of the endpoint, capitalized
+- The type of the endpoint, Query or Mutation
+
+In this case, our endpoint is getPosts and it's a query endpoint, so the generated hook is useGetPostsQuery.
+
+
+---------------
+ETAPE 3 - METTRE EN PLACE L'APIPROVIDER
+---------------
+ETAPE 4 - IMPORTER DS LE COMPONENT LE USEQUERY
+---------------
+ETAPE 5 - ADD REDUCERPATH DANS LE STORE ?
+Uncaught Error: Warning: Middleware for RTK-Query API at reducerPath "api" has not been added to the store.
+exemple: 
+import { apiSlice } from '../features/api/apiSlice'
+
+export default configureStore({
+  reducer: {
+    posts: postsReducer,
+    users: usersReducer,
+    notifications: notificationsReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(apiSlice.middleware)
+})
+
+-- Questions :
+
+- Comment configurer headers + renvoi jwt ?
+- Comment gérer avec le middwleware ?
+
+*/
+
+``` 
+
 ---
 
 ## Sources
