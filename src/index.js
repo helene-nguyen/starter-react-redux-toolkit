@@ -1,8 +1,8 @@
 //& Imports Modules
 import { StrictMode } from 'react';
+// Since React 18, we use  / Import from react-dom/client !
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-// Since React 18, we use  / Import from react-dom/client !
 import { Provider } from 'react-redux';
 import { store } from './Store';
 

@@ -3,23 +3,36 @@ import { createSlice } from '@reduxjs/toolkit';
 
 //~ Initial state
 const initialState = {
-  
+  user: null,
+  token: null,
 };
 
 //~ Methods
-const handleMsg = (state, action) => {
-//   console.log('here reducer rental : ', action.payload);
+const setCredentialsReducer = (state, action) => {
+  const { user, accessToken } = action.payload;
+  state.user = user;
+  state.accessToken = accessToken;
+};
+
+// We want it back to null when log out
+const logOutReducer = (state, action) => {
+  state.user = null;
+  state.token = null;
 };
 
 //~ Exports
-export const rentalSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    handleRentalMsg: handleMsg,
+    setCredentials: setCredentialsReducer,
+    logOut: logOutReducer,
   },
 });
 
-export const { handleRentalMsg } = rentalSlice.actions;
+export const { setCredentials, logOut } = authSlice.actions;
 
-export default rentalSlice.reducer;
+export default authSlice.reducer;
+
+export const selectCurrentUser = (state) => state.auth.user;
+export const selectCurrentToken = (state) => state.auth.token;
