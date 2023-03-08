@@ -1,9 +1,11 @@
 //& Import modules
 import './Articles.scss';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useGetPayload } from '../../Hooks/useGetPayload';
 import { getPayload } from '../../Store/Reducers/Payload';
+import { setCredentials } from '../../Store/Reducers/Features/Auth';
+import { useLoginMutation } from '../../Store/Api/authApiSlice';
 import Spinner from '../../Components/Spinner/Spinner.jsx';
 
 import { useGetAllJSONQuery } from '../../Store/Api';
@@ -35,7 +37,6 @@ const Articles = () => {
     event.preventDefault();
     try {
       const formData = new FormData(event.target);
-      console.log('data: ', formData);
 
       //& Method 0 - get payload by key and affect value one by one
       // const payload = {
@@ -58,6 +59,7 @@ const Articles = () => {
       for (const elem of formData.entries()) {
         dispatch(getPayload(elem));
       }
+      console.log('METHOD 3: ', body3);
 
       //~------------------------------ Signin
       const result = await signIn(body).unwrap();
@@ -67,7 +69,15 @@ const Articles = () => {
       setDisplayMsg(err.data.message);
     }
   };
-  // console.log('METHOD 3: ', body3);
+
+  //& AUTEHNTICATION TOKEN
+  const useRef = useRef();
+  const errRef = useRef();
+  const [user, setUser] = useState('')
+  const [login, { isLoading }] = useLoginMutation();
+
+
+
 
   //^CREATE RENTAL
   const doCreateRental = async (event) => {

@@ -17,4 +17,3 @@ const { articlePath, articleElement } = ArticlesRoutes;
 const articleRoute = <Route path={articlePath} element={articleElement} />;
 
 export { Router, mainRoutes, articleRoute };
-

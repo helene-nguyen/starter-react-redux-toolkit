@@ -20,7 +20,24 @@ const prepareHeaders = (headers, { getState }) => {
 const baseQueryWithReAuth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
-  // we want to send
+  // we want to send refresh token to get new access token
+  if (result?.error?.originalStatus === 403) {
+    console.log('sending refresh token');
+
+    const refreshResult = await baseQuery('/refresh', api, extraOptions);
+    console.log(refreshResult);
+
+    if (refreshResult?.data) {
+      const user = api.getState().auth.user;
+      //store the new token with setCredentials
+      api.dispatch(setCredentials({ ...refreshResult.data, user }));
+
+      //retry the original query with access token
+      result = await baseQuery(args, api, extraOptions);
+      //reuse the logOut from the reducer
+    } else api.dispatch(logOut());
+  }
+  return result;
 };
 
 const options = {
@@ -91,7 +108,15 @@ const options = {
   }),
 };
 
+
+
 export const rentolioApiSlice = createApi(options);
+
+//& Token for auth
+export const apiSlice = createApi({
+  baseQuery: baseQueryWithReAuth,
+  endpoints: (build) => ({}) // let empty for now
+})
 
 // Hooks automatically generated based on the name of the endpoint
 // useQuery is the primary Hook => automatically fetches data from an endpoint
